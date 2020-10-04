@@ -161,21 +161,21 @@
                                         $payer->email = "test_user_63274575@testuser.com";
                                         $payer->phone = array(
                                             "area_code" => "11",
-                                            "number" => "12345678"
+                                            "number" => "22223333"
                                         );
                                           
                                         $payer->address = array(
-                                           "street_name" => "Siempre Viva",
-                                           "street_number" => 742,
-                                           "zip_code" => "8989"
+                                           "street_name" => "False",
+                                           "street_number" => 123,
+                                           "zip_code" => "1111"
                                         );
                                         // ...
 
                                         //...
                                         $preference->back_urls = array(
-                                            "success" => "https://scorpiatus-mp-ecommerce-php.herokuapp.com/success.php",
-                                            "failure" => "https://scorpiatus-mp-ecommerce-php.herokuapp.com/failure.php",
-                                            "pending" => "https://scorpiatus-mp-ecommerce-php.herokuapp.com/pending.php"
+                                            "success" => "https://scorpiatus-mp-ecommerce-php.herokuapp.com/exito.php",
+                                            "failure" => "https://scorpiatus-mp-ecommerce-php.herokuapp.com/error.php",
+                                            "pending" => "https://scorpiatus-mp-ecommerce-php.herokuapp.com/pendiente.php"
                                         );
                                         $preference->auto_return = "approved";
                                         // ...
