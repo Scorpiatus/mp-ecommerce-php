@@ -132,6 +132,69 @@
                                         </h3>
                                     </div>
                                     
+                                    <?
+                                        // SDK de Mercado Pago
+                                        require __DIR__ .  '/vendor/autoload.php';
+                                    
+                                        // Agrega credenciales
+                                        MercadoPago\SDK::setIntegratorId('dev_24c65fb163bf11ea96500242ac130004');
+                                        MercadoPago\SDK::setAccessToken('APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398');
+                                        // Crea un objeto de preferencia
+                                        $preference = new MercadoPago\Preference();
+                                        // Metodos de Pago
+                                        $preference->payment_methods = array(
+                                          "excluded_payment_methods" => array(
+                                            array("id" => "amex")
+                                          ),
+                                          "excluded_payment_types" => array(
+                                            array("id" => "atm")
+                                          ),
+                                          "installments" => 6
+                                        );
+                                       
+
+                                        // Datos del Pagador
+                                        $payer = new MercadoPago\Payer();
+                                        $payer->name = "Lalo";
+                                        $payer->surname = "Landa";
+                                        $payer->email = "test_user_63274575@testuser.com";
+                                        $payer->phone = array(
+                                            "area_code" => "11",
+                                            "number" => "22223333"
+                                        );
+                                          
+                                        $payer->address = array(
+                                           "street_name" => "False",
+                                           "street_number" => 123,
+                                           "zip_code" => "1111"
+                                        );
+                                        // ...
+
+                                        //...
+                                        $preference->back_urls = array(
+                                            "success" => "https://scorpiatus-mp-ecommerce-php.herokuapp.com/exito.php",
+                                            "failure" => "https://scorpiatus-mp-ecommerce-php.herokuapp.com/error.php",
+                                            "pending" => "https://scorpiatus-mp-ecommerce-php.herokuapp.com/pendiente.php"
+                                        );
+                                        $preference->auto_return = "approved";
+                                        // ...
+
+                                        // Crea un ítem en la preferencia
+                                        $item = new MercadoPago\Item();
+                                        $item->id = 1234;
+                                        $item->title = $_POST['title'];
+                                        $item->description = $_POST['title'];
+                                        $item->picture_url = $_POST['img'];
+                                        $item->quantity = 1;
+                                        $item->unit_price = $_POST['price'];
+                                        $preference->items = array($item);
+
+                                        $preference->external_reference = 'hernan@bayresapp.com';
+                                        $preference->notification_url = "https://scorpiatus-mp-ecommerce-php.herokuapp.com/callback.php";
+
+                                        $preference->save();
+
+                                    ?>
                                     
                                           <a class="mercadopago-button" data-preference="<?php echo $preference->id ?>" style="padding:10px; font-size: 16px; font-weight: bold;" href='<?php echo $preference->init_point ?>'>Pagar la compra</a>
 
