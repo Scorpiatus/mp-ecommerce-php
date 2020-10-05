@@ -132,8 +132,8 @@
                                         </h3>
                                     </div>
                                     
-                                    <!-- -->
-                                    <?php
+                                    
+                                    <?
                                         // SDK de Mercado Pago
                                         require __DIR__ .  '/vendor/autoload.php';
                                     
@@ -152,7 +152,7 @@
                                           ),
                                           "installments" => 6
                                         );
-                                        // ...
+                                       
 
                                         // Datos del Pagador
                                         $payer = new MercadoPago\Payer();
@@ -195,10 +195,11 @@
 
                                         $preference->save();
 
-                                        //Setear el integrator-id
-                                        MercadoPago\SDK::setIntegratorId("dev_24c65fb163bf11ea96500242ac130004");
                                     ?>
-                                                                        
+                                             <script
+                            src="https://www.mercadopago.com.mx/integrations/v1/web-payment-checkout.js"
+                            data-preference-id="<?php echo $preference->id; ?>">
+                        </script>                           
                                     <a href="<?php echo $preference->init_point; ?>">Pagar la compra</a>
 
                                 </div>
