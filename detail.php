@@ -191,7 +191,7 @@
                                         $preference->items = array($item);
 
                                         $preference->external_reference = 'hernan@bayresapp.com';
-                                        $preference->notification_url = "https://scorpiatus-mp-ecommerce-php.herokuapp.com/notification.php";
+                                        $preference->notification_url = "https://scorpiatus-mp-ecommerce-php.herokuapp.com/callback.php";
 
                                         $preference->save();
 
